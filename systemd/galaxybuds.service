@@ -1,0 +1,16 @@
+[Unit]
+Description=Galaxy Buds2 control daemon
+Documentation=https://github.com/timschneeb/GalaxyBudsClient
+After=bluetooth.target
+Wants=bluetooth.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/budsd
+Restart=always
+RestartSec=5
+# The daemon only talks to BlueZ and its own runtime directory.
+PrivateTmp=no
+
+[Install]
+WantedBy=default.target
